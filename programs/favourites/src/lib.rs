@@ -16,7 +16,8 @@ pub mod favourites {
     ) -> Result<()> {
         msg!("Greetings from {}", context.program_id);
 
-        let user_public_key = context.accounts.user.key();
+        #[allow(unused_variables)]
+        let user_public_key: Pubkey = context.accounts.user.key();
 
         msg!("User {user_public_key}'s fav number: {number}, fav color is {color} and hobbies are {hobbies:?}");
 
