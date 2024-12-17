@@ -17,7 +17,7 @@ pub mod favourites {
         msg!("Greetings from {}", context.program_id);
 
         #[allow(unused_variables)]
-        let user_public_key: Pubkey = context.accounts.user.key();
+        let user_public_key = context.accounts.user.key();
 
         msg!("User {user_public_key}'s fav number: {number}, fav color is {color} and hobbies are {hobbies:?}");
 
@@ -54,9 +54,9 @@ pub struct SetFavourites<'info> {
         init_if_needed,
         // Who is going to pay for the information to write on blockchain
         payer = user,
-
         space = ANCHOR_DISCRIMINATOR_SIZE + Favourites::INIT_SPACE,
-        seeds = [b"favourites", user.key().as_ref()],
+        seeds = [b"favourites", user.key().as_ref()], // So we are setting the key as the userKey
+                                                      // and the favourite
         bump
     )]
     pub favourites: Account<'info, Favourites>,

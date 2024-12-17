@@ -10,7 +10,11 @@ describe("favourites", () => {
 
   it("Is initialized!", async () => {
     // Add your test here.
-    const tx = await program.methods.initialize().rpc();
+    const tx = await program.methods.setFavourite(
+      new anchor.BN(4),
+      "blue",
+      ["Coding", "Music"],
+    ).rpc();
     console.log("Your transaction signature", tx);
   });
 });
